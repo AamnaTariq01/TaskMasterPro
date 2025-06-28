@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Task - Todo List{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">
+                    <i data-feather="plus" class="me-2"></i>
+                    {{ title }}
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                    
+                    <!-- Title Field -->
+                    <div class="mb-3">
+                        {{ form.title.label(class="form-label") }}
+                        {{ form.title(class="form-control" + (" is-invalid" if form.title.errors else "")) }}
+                        {% if form.title.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.title.errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Description Field -->
+                    <div class="mb-3">
+                        {{ form.description.label(class="form-label") }}
+                        {{ form.description(class="form-control" + (" is-invalid" if form.description.errors else ""), rows="3") }}
+                        {% if form.description.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.description.errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">Optional: Add more details about your task</div>
+                    </div>
+                    
+                    <!-- Due Date and Priority Row -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.due_date.label(class="form-label") }}
+                            {{ form.due_date(class="form-control" + (" is-invalid" if form.due_date.errors else "")) }}
+                            {% if form.due_date.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.due_date.errors %}
+                                        <div>{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <div class="form-text">Optional: When should this be completed?</div>
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.priority.label(class="form-label") }}
+                            {{ form.priority(class="form-select" + (" is-invalid" if form.priority.errors else "")) }}
+                            {% if form.priority.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.priority.errors %}
+                                        <div>{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Completed Checkbox -->
+                    <div class="mb-4">
+                        <div class="form-check">
+                            {{ form.completed(class="form-check-input") }}
+                            {{ form.completed.label(class="form-check-label") }}
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                            <i data-feather="arrow-left" class="me-1"></i>
+                            Cancel
+                        </a>
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

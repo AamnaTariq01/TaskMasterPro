@@ -1,0 +1,136 @@
+/* Custom styles for Todo List Application */
+
+/* Ensure consistent sizing for feather icons in buttons */
+.btn i[data-feather] {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+/* Task completion toggle button hover effects */
+.btn.rounded-circle:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Smooth transitions for task cards */
+.card {
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Priority badge styling enhancements */
+.badge {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    
+    .card-body .row.align-items-center {
+        flex-direction: column;
+        align-items: start !important;
+    }
+    
+    .card-body .col-md-6:last-child {
+        margin-top: 1rem;
+        width: 100%;
+    }
+    
+    .d-flex.justify-content-end {
+        justify-content: start !important;
+    }
+    
+    .text-end {
+        text-align: start !important;
+    }
+}
+
+/* Form validation styling */
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: var(--bs-danger);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-danger-rgb), 0.25);
+}
+
+/* Statistics cards hover effects */
+.card.bg-primary:hover,
+.card.bg-success:hover,
+.card.bg-warning:hover,
+.card.bg-danger:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Empty state styling */
+.text-center.py-5 i[data-feather] {
+    opacity: 0.5;
+}
+
+/* Filter form enhancements */
+.card-header .card-title {
+    color: var(--bs-body-color);
+}
+
+/* Task content styling */
+.card-title.text-decoration-line-through {
+    opacity: 0.6;
+}
+
+.card-text.text-decoration-line-through {
+    opacity: 0.5;
+}
+
+/* Footer styling */
+footer {
+    margin-top: auto;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Focus states for accessibility */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 2px;
+}
+
+/* Loading states for form submissions */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bs-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bs-secondary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-primary);
+}
