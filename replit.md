@@ -8,7 +8,7 @@ This is a Flask-based todo list application that provides users with a simple ye
 
 ### Backend Architecture
 - **Framework**: Flask (Python web framework)
-- **Database**: SQLite with SQLAlchemy ORM
+- **Database**: PostgreSQL with SQLAlchemy ORM
 - **Forms**: Flask-WTF for form handling and validation
 - **Templating**: Jinja2 templates with Bootstrap for UI components
 
@@ -86,26 +86,28 @@ The application follows a modular structure with clear separation of concerns:
 ## Deployment Strategy
 
 ### Current Configuration
-- **Database**: SQLite file-based storage (`todo.db`)
+- **Database**: PostgreSQL with connection pooling
 - **Session Management**: Secret key from environment or default
 - **Proxy Support**: Configured for reverse proxy deployment
+- **Security**: CSRF protection enabled for all forms
 - **Debug Mode**: Enabled for development
 
 ### Production Considerations
 - Environment-based configuration management
-- Database migration strategy (ready for PostgreSQL upgrade)
+- PostgreSQL database with robust connection handling
 - Static file serving optimization
 - Error handling and logging
 - Security headers and CSRF protection
 
 ### Scalability Preparation
-- ORM abstraction allows easy database switching
+- PostgreSQL database ready for production scale
 - Modular structure supports feature expansion
 - Form validation ready for API endpoints
 - Frontend prepared for SPA conversion
 
 ## Changelog
-- June 28, 2025. Initial setup
+- June 28, 2025. Initial setup with SQLite database
+- June 28, 2025. Upgraded to PostgreSQL database with proper CSRF protection
 
 ## User Preferences
 
