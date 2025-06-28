@@ -69,14 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Task completion toggle with visual feedback
     const toggleButtons = document.querySelectorAll('form[action*="toggle"] button[type="submit"]');
     toggleButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(event) {
+            // Don't prevent default - let form submit normally
             button.disabled = true;
             button.innerHTML = '<div class="spinner-border spinner-border-sm" role="status"></div>';
-            
-            // Re-enable after form submission
-            setTimeout(function() {
-                button.disabled = false;
-            }, 1000);
         });
     });
     

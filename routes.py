@@ -71,21 +71,23 @@ def index():
     
     tasks = query.all()
     
-    # Calculate statistics
-    total_tasks = Task.query.count()
+    # Calculate statistics - show total from filtered results, not all tasks
+    filtered_total = len(tasks)
+    all_tasks_count = Task.query.count()
     completed_tasks = Task.query.filter(Task.completed == True).count()
-    pending_tasks = total_tasks - completed_tasks
+    pending_tasks = all_tasks_count - completed_tasks
     overdue_tasks = Task.query.filter(
         Task.due_date < datetime.now().date(),
         Task.completed == False
     ).count() if Task.query.filter(Task.due_date.isnot(None)).count() > 0 else 0
     
     stats = {
-        'total': total_tasks,
+        'total': all_tasks_count,  # Show all tasks count
         'completed': completed_tasks,
         'pending': pending_tasks,
         'overdue': overdue_tasks,
-        'completion_rate': round((completed_tasks / total_tasks * 100) if total_tasks > 0 else 0, 1)
+        'completion_rate': round((completed_tasks / all_tasks_count * 100) if all_tasks_count > 0 else 0, 1),
+        'filtered_count': filtered_total  # Add filtered count for display
     }
     
     return render_template('index.html', tasks=tasks, filter_form=filter_form, stats=stats)
