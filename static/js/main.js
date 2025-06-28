@@ -67,13 +67,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Task completion toggle with visual feedback
-    const toggleButtons = document.querySelectorAll('form[action*="toggle"] button[type="submit"]');
-    toggleButtons.forEach(function(button) {
-        button.addEventListener('click', function(event) {
-            // Don't prevent default - let form submit normally
-            button.disabled = true;
-            button.innerHTML = '<div class="spinner-border spinner-border-sm" role="status"></div>';
-        });
+    const toggleForms = document.querySelectorAll('.task-toggle-form');
+    toggleForms.forEach(function(form) {
+        const checkbox = form.querySelector('.task-checkbox');
+        if (checkbox) {
+            checkbox.addEventListener('change', function() {
+                // Add visual feedback
+                checkbox.disabled = true;
+                const formCheck = checkbox.closest('.form-check');
+                formCheck.style.opacity = '0.6';
+                
+                // Submit form
+                form.submit();
+            });
+        }
     });
     
     // Keyboard shortcuts

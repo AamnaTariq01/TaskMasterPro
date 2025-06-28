@@ -110,16 +110,20 @@
                                 <div class="col-md-6">
                                     <div class="d-flex align-items-start">
                                         <!-- Completion Toggle -->
-                                        <form method="POST" action="{{ url_for('toggle_task', task_id=task.id) }}" class="me-3">
-                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-                                            <button type="submit" class="btn btn-sm {% if task.completed %}btn-success{% else %}btn-outline-secondary{% endif %} rounded-circle" style="width: 40px; height: 40px;">
-                                                {% if task.completed %}
-                                                    <i data-feather="check"></i>
-                                                {% else %}
-                                                    <i data-feather="circle"></i>
-                                                {% endif %}
-                                            </button>
-                                        </form>
+                                        <div class="me-3">
+                                            <form method="POST" action="{{ url_for('toggle_task', task_id=task.id) }}" class="task-toggle-form">
+                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                                <div class="form-check">
+                                                    <input class="form-check-input task-checkbox" type="checkbox" 
+                                                           {% if task.completed %}checked{% endif %}
+                                                           onchange="this.form.submit()" 
+                                                           style="transform: scale(1.5); margin-top: 0.5rem;">
+                                                    <label class="form-check-label visually-hidden">
+                                                        Mark task as {{ 'incomplete' if task.completed else 'complete' }}
+                                                    </label>
+                                                </div>
+                                            </form>
+                                        </div>
                                         
                                         <!-- Task Content -->
                                         <div class="flex-grow-1">

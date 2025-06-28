@@ -7,10 +7,32 @@
     vertical-align: middle;
 }
 
-/* Task completion toggle button hover effects */
-.btn.rounded-circle:hover {
-    transform: scale(1.05);
-    transition: transform 0.2s ease-in-out;
+/* Task completion checkbox styling */
+.task-checkbox {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.task-checkbox:hover {
+    transform: scale(1.1);
+}
+
+.task-checkbox:checked {
+    background-color: var(--bs-success);
+    border-color: var(--bs-success);
+}
+
+.task-toggle-form {
+    margin: 0;
+}
+
+.task-toggle-form .form-check {
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.task-toggle-form .form-check-input {
+    margin-left: 0;
 }
 
 /* Smooth transitions for task cards */
